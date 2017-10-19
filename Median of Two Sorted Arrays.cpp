@@ -1,4 +1,4 @@
-// Median of Two Sorted Arrays.cpp : ¶¨Òå¿ØÖÆÌ¨Ó¦ÓÃ³ÌÐòµÄÈë¿Úµã¡£
+// Median of Two Sorted Arrays.cpp : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨Ó¦ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµã¡£
 //
 
 #include "stdafx.h"
@@ -8,28 +8,37 @@
 #include <sstream>
 using namespace std;
 
-class Solution {
-public:
-	double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+class Solution
+{
+  public:
+	double findMedianSortedArrays(vector<int> &nums1, vector<int> &nums2)
+	{
 		int num_size = nums1.size() + nums2.size();
-		int j = 0 , k = 0;
+		int j = 0, k = 0;
 		double target1, target2;
-		if (num_size % 2 == 1) {
-			for (int i = 0; i <= num_size / 2; i++) {
-				if (j >= nums1.size()) {
+		if (num_size % 2 == 1)
+		{
+			for (int i = 0; i <= num_size / 2; i++)
+			{
+				if (j >= nums1.size())
+				{
 					target1 = nums2[k];
 					k++;
 				}
-				else if (k >= nums2.size()) {
+				else if (k >= nums2.size())
+				{
 					target1 = nums1[j];
 					j++;
 				}
-				else {
-					if (nums1[j] <= nums2[k]) {
+				else
+				{
+					if (nums1[j] <= nums2[k])
+					{
 						target1 = nums1[j];
 						j++;
 					}
-					else {
+					else
+					{
 						target1 = nums2[k];
 						k++;
 					}
@@ -37,41 +46,53 @@ public:
 			}
 			return target1;
 		}
-		else {
-			for (int i = 0; i < num_size / 2; i++) {
-				if (j >= nums1.size()) {
+		else
+		{
+			for (int i = 0; i < num_size / 2; i++)
+			{
+				if (j >= nums1.size())
+				{
 					target1 = nums2[k];
 					k++;
 				}
-				else if (k >= nums2.size()) {
+				else if (k >= nums2.size())
+				{
 					target1 = nums1[j];
 					j++;
 				}
-				else {
-					if (nums1[j] <= nums2[k]) {
+				else
+				{
+					if (nums1[j] <= nums2[k])
+					{
 						target1 = nums1[j];
 						j++;
 					}
-					else {
+					else
+					{
 						target1 = nums2[k];
 						k++;
 					}
 				}
 			}
-			if (j >= nums1.size()) {
+			if (j >= nums1.size())
+			{
 				target2 = nums2[k];
 				k++;
 			}
-			else if (k >= nums2.size()) {
+			else if (k >= nums2.size())
+			{
 				target2 = nums1[j];
 				j++;
 			}
-			else {
-				if (nums1[j] <= nums2[k]) {
+			else
+			{
+				if (nums1[j] <= nums2[k])
+				{
 					target2 = nums1[j];
 					j++;
 				}
-				else {
+				else
+				{
 					target2 = nums2[k];
 					k++;
 				}
@@ -81,19 +102,23 @@ public:
 	}
 };
 
-void trimLeftTrailingSpaces(string &input) {
+void trimLeftTrailingSpaces(string &input)
+{
 	input.erase(input.begin(), find_if(input.begin(), input.end(), [](int ch) {
-		return !isspace(ch);
-	}));
+					return !isspace(ch);
+				}));
 }
 
-void trimRightTrailingSpaces(string &input) {
+void trimRightTrailingSpaces(string &input)
+{
 	input.erase(find_if(input.rbegin(), input.rend(), [](int ch) {
-		return !isspace(ch);
-	}).base(), input.end());
+					return !isspace(ch);
+				}).base(),
+				input.end());
 }
 
-vector<int> stringToIntegerVector(string input) {
+vector<int> stringToIntegerVector(string input)
+{
 	vector<int> output;
 	trimLeftTrailingSpaces(input);
 	trimRightTrailingSpaces(input);
@@ -102,15 +127,18 @@ vector<int> stringToIntegerVector(string input) {
 	ss.str(input);
 	string item;
 	char delim = ',';
-	while (getline(ss, item, delim)) {
+	while (getline(ss, item, delim))
+	{
 		output.push_back(stoi(item));
 	}
 	return output;
 }
 
-int main() {
+int main()
+{
 	string line;
-	while (getline(cin, line)) {
+	while (getline(cin, line))
+	{
 		vector<int> nums1 = stringToIntegerVector(line);
 		getline(cin, line);
 		vector<int> nums2 = stringToIntegerVector(line);

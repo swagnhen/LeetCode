@@ -1,4 +1,4 @@
-// Longest Substring Without Repeating Characters.cpp : ¶¨Òå¿ØÖÆÌ¨Ó¦ÓÃ³ÌÐòµÄÈë¿Úµã¡£
+// Longest Substring Without Repeating Characters.cpp : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨Ó¦ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµã¡£
 //
 
 #include "stdafx.h"
@@ -6,19 +6,24 @@
 #include <string>
 using namespace std;
 
-class Solution {
-public:
-	int lengthOfLongestSubstring(string s) {
+class Solution
+{
+  public:
+	int lengthOfLongestSubstring(string s)
+	{
 		int max = 0;
 		int cum = 0;
 		bool flag[256];
 		memset(flag, false, sizeof(bool) * 256);
 		int i = 0, j = 0;
-		while (i < s.size()) {
+		while (i < s.size())
+		{
 			cum = 1;
 			flag[s[i]] = true;
-			for (j = i + 1; j < s.size(); j++) {
-				if (flag[s[j]] == true) {
+			for (j = i + 1; j < s.size(); j++)
+			{
+				if (flag[s[j]] == true)
+				{
 					i = j - cum + 1;
 					break;
 				}
@@ -35,13 +40,16 @@ public:
 	}
 };
 
-string stringToString(string input) {
+string stringToString(string input)
+{
 	return input.substr(1, input.length() - 1);
 }
 
-int main() {
+int main()
+{
 	string line;
-	while (getline(cin, line)) {
+	while (getline(cin, line))
+	{
 		string s = stringToString(line);
 
 		int ret = Solution().lengthOfLongestSubstring(s);
@@ -51,4 +59,3 @@ int main() {
 	}
 	return 0;
 }
-

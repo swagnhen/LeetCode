@@ -1,4 +1,4 @@
-// ZigZag Conversion.cpp : ¶¨Òå¿ØÖÆÌ¨Ó¦ÓÃ³ÌÐòµÄÈë¿Úµã¡£
+// ZigZag Conversion.cpp : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨Ó¦ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµã¡£
 //
 
 #include "stdafx.h"
@@ -6,23 +6,28 @@
 #include <string>
 using namespace std;
 
-
-class Solution {
-public:
-	string convert(string s, int numRows) {
+class Solution
+{
+  public:
+	string convert(string s, int numRows)
+	{
 		if (numRows == 1)
 			return s;
 		string result;
 		int num_group = numRows * 2 - 2;
-		for (int i = 0; i < numRows; i++) {
-			if (i == 0 || i == (numRows - 1)) {
+		for (int i = 0; i < numRows; i++)
+		{
+			if (i == 0 || i == (numRows - 1))
+			{
 				for (int j = 0; j < s.size() / num_group; j++)
 					result += s[i + j * num_group];
 				if (i < s.size() % num_group)
 					result += s[i + (s.size() / num_group) * num_group];
 			}
-			else {
-				for (int j = 0; j < s.size() / num_group; j++) {
+			else
+			{
+				for (int j = 0; j < s.size() / num_group; j++)
+				{
 					result += s[i + j * num_group];
 					result += s[(j + 1) * num_group - i];
 				}
@@ -36,17 +41,21 @@ public:
 	}
 };
 
-string stringToString(string input) {
+string stringToString(string input)
+{
 	return input.substr(1, input.length() - 1);
 }
 
-int stringToInteger(string input) {
+int stringToInteger(string input)
+{
 	return stoi(input);
 }
 
-int main() {
+int main()
+{
 	string line;
-	while (getline(cin, line)) {
+	while (getline(cin, line))
+	{
 		string s = stringToString(line);
 		getline(cin, line);
 		int numRows = stringToInteger(line);
@@ -58,4 +67,3 @@ int main() {
 	}
 	return 0;
 }
-

@@ -1,4 +1,4 @@
-// Two Sum.cpp : ¶¨Òå¿ØÖÆÌ¨Ó¦ÓÃ³ÌÐòµÄÈë¿Úµã¡£
+// Two Sum.cpp : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨Ó¦ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµã¡£
 //
 
 #include "stdafx.h"
@@ -8,13 +8,16 @@
 #include <vector>
 using namespace std;
 
-class Solution {
-public:
-	vector<int> twoSum(vector<int>& nums, int target) {
+class Solution
+{
+  public:
+	vector<int> twoSum(vector<int> &nums, int target)
+	{
 		vector<int> result;
 		for (int i = 0; i < nums.size(); i++)
 			for (int j = i + 1; j < nums.size(); j++)
-				if (target == nums[i] + nums[j]) {
+				if (target == nums[i] + nums[j])
+				{
 					result.push_back(i);
 					result.push_back(j);
 					return result;
@@ -22,19 +25,23 @@ public:
 	}
 };
 
-void trimLeftTrailingSpaces(string &input) {
+void trimLeftTrailingSpaces(string &input)
+{
 	input.erase(input.begin(), find_if(input.begin(), input.end(), [](int ch) {
-		return !isspace(ch);
-	}));
+					return !isspace(ch);
+				}));
 }
 
-void trimRightTrailingSpaces(string &input) {
+void trimRightTrailingSpaces(string &input)
+{
 	input.erase(find_if(input.rbegin(), input.rend(), [](int ch) {
-		return !isspace(ch);
-	}).base(), input.end());
+					return !isspace(ch);
+				}).base(),
+				input.end());
 }
 
-vector<int> stringToIntegerVector(string input) {
+vector<int> stringToIntegerVector(string input)
+{
 	vector<int> output;
 	trimLeftTrailingSpaces(input);
 	trimRightTrailingSpaces(input);
@@ -43,32 +50,39 @@ vector<int> stringToIntegerVector(string input) {
 	ss.str(input);
 	string item;
 	char delim = ',';
-	while (getline(ss, item, delim)) {
+	while (getline(ss, item, delim))
+	{
 		output.push_back(stoi(item));
 	}
 	return output;
 }
 
-int stringToInteger(string input) {
+int stringToInteger(string input)
+{
 	return stoi(input);
 }
 
-string integerVectorToString(vector<int> list, int length = -1) {
-	if (length == -1) {
+string integerVectorToString(vector<int> list, int length = -1)
+{
+	if (length == -1)
+	{
 		length = list.size();
 	}
 
 	string result;
-	for (int index = 0; index < length; index++) {
+	for (int index = 0; index < length; index++)
+	{
 		int number = list[index];
 		result += to_string(number) + ", ";
 	}
 	return result.substr(0, result.length() - 2);
 }
 
-int main() {
+int main()
+{
 	string line;
-	while (getline(cin, line)) {
+	while (getline(cin, line))
+	{
 		vector<int> nums = stringToIntegerVector(line);
 		getline(cin, line);
 		int target = stringToInteger(line);
@@ -80,4 +94,3 @@ int main() {
 	}
 	return 0;
 }
-
